@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>She Can Foundation | NGO Registered under Indian Society ...</title>
+<link rel="icon" href="shecan123.jpg" >
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --red: #E8001D;
+    --dark-red: #B50018;
+    --bg: #FFFFFF;
+    --bg2: #F7F7F7;
+    --text: #111111;
+    --muted: #555555;
+    --border: #E0E0E0;
+    --card: #FFFFFF;
+    --nav-bg: transparent;
+    --footer-bg: #111111;
+    --footer-text: #BBBBBB;
+  }
+  [data-theme="dark"] {
+    --bg: #0A0A0A;
+    --bg2: #141414;
+    --text: #F0F0F0;
+    --muted: #AAAAAA;
+    --border: #2A2A2A;
+    --card: #1A1A1A;
+    --nav-bg: transparent;
+    --footer-bg: #000000;
+    --footer-text: #999999;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.7;
+    transition: background 0.4s, color 0.4s;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    background: transparent;
+    padding: 5px;
+    margin-top: 10px;
+    height: 100px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  
+  .nav-logo {
+    display: flex; align-items: center; gap: 0.75rem;
+    text-decoration: none;
+  }
+  .nav-logo img {
+    height: 130px; width: 130px;
+    border-radius: 3px;
+    margin-left: 10px;
+    margin-top: 10px;
+    padding-top: 10px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.2s;
+  }
+  .nav-logo:hover img { transform: scale(1.05); }
+  .nav-logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; font-size: 1.05rem;
+    color: #fff; letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .nav-logo-text span { color: var(--red); }
+  .nav-logo-sub {
+    font-size: 0.68rem; font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.06em; text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .nav-links { display: flex; align-items: center; gap: 2.2rem; }
+  .nav-links a {
+    text-decoration: none; color: rgba(255,255,255,0.85);
+    font-size: 0.9rem; font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a.active,
+  .nav-links a:hover { color: #fff; }
+  .nav-links a.active::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 2px; background: var(--red); border-radius: 2px;
+  }
+  .nav-right { display: flex; align-items: center; gap: 1rem; }
+  .nav-donate-btn {
+    background: var(--red); color: #fff;
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.82rem;
+    letter-spacing: 0.04em; text-decoration: none;
+    padding: 0.5rem 1.4rem; border-radius: 4px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-donate-btn:hover { background: var(--dark-red); transform: translateY(-1px); }
+  .theme-btn {
+    background: none; border: 1.5px solid rgba(255,255,255,0.25);
+    border-radius: 6px; cursor: pointer;
+    padding: 0.3rem 0.65rem; color: rgba(255,255,255,0.7);
+    font-size: 0.78rem; font-family: 'Open Sans', sans-serif;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .theme-btn:hover { border-color: rgba(255,255,255,0.6); color: #fff; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; min-height: 100vh;
+    display: flex; align-items: flex-end;
+    padding-bottom: 8rem; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=1600&auto=format&fit=crop&q=80');
+    background-size: cover; background-position: center;
+    filter: brightness(0.38);
+    animation: heroZoom 14s ease-out forwards;
+  }
+  @keyframes heroZoom {
+    from { transform: scale(1.08); }
+    to   { transform: scale(1.00); }
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 60%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 6rem;
+    max-width: 980px;
+  }
+  .hero-content h1 {
+    font-family: 'Montserrat', sans-serif; font-weight: 900;
+    font-size: clamp(3rem, 5.5vw, 5.2rem);
+    color: #fff; line-height: 1.0; letter-spacing: -0.025em;
+    opacity: 0; animation: fadeUp 0.9s 0.2s ease forwards;
+  }
+  .hero-red {
+    display: block; color: var(--red);
+    font-size: clamp(3.5rem, 7vw, 6.8rem);
+    opacity: 0; animation: fadeUp 0.9s 0.4s ease forwards;
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.8); font-size: 1.05rem;
+    max-width: 500px; margin: 1.5rem 0 2.5rem;
+    opacity: 0; animation: fadeUp 0.9s 0.6s ease forwards;
+  }
+  .hero-btns {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.9s 0.8s ease forwards;
+  }
+  .btn-red {
+    display: inline-block; background: var(--red); color: #fff;
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem;
+    text-decoration: none; padding: 0.9rem 2.4rem; border-radius: 4px;
+    letter-spacing: 0.03em; border: 2px solid var(--red);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-red:hover { background: var(--dark-red); border-color: var(--dark-red); transform: translateY(-2px); }
+  .btn-outline {
+    display: inline-block; background: transparent; color: #fff;
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem;
+    text-decoration: none; padding: 0.9rem 2.4rem; border-radius: 4px;
+    letter-spacing: 0.03em; border: 2px solid rgba(255,255,255,0.5);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .btn-outline:hover { border-color: #fff; transform: translateY(-2px); }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    background: var(--red);
+    display: grid; grid-template-columns: repeat(4,1fr);
+    text-align: center; padding: 2rem 4rem;
+    gap: 1rem;
+  }
+  .ss-num {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; font-size: 2rem; color: #fff; line-height: 1;
+  }
+  .ss-lbl {
+    font-size: 0.72rem; color: rgba(255,255,255,0.78);
+    text-transform: uppercase; letter-spacing: 0.1em; margin-top: 5px;
+  }
+
+  /* ── SECTION COMMONS ── */
+  .section-label {
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 0.9rem;
+  }
+  h2.section-heading {
+    font-family: 'Montserrat', sans-serif; font-weight: 900;
+    font-size: clamp(1.8rem, 3vw, 2.7rem);
+    line-height: 1.15; letter-spacing: -0.025em;
+    margin-bottom: 1.2rem;
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    padding: 7rem 6rem;
+    background: var(--bg); transition: background 0.4s;
+  }
+  .about-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .about-img-wrap { position: relative; border-radius: 10px; overflow: visible; }
+  .about-img-wrap img {
+    width: 100%; border-radius: 10px; display: block;
+    transition: transform 0.5s ease;
+  }
+  .about-img-wrap:hover img { transform: scale(1.02); }
+  .about-img-accent {
+    position: absolute; bottom: -18px; right: -18px;
+    width: 130px; height: 130px;
+    background: var(--red); border-radius: 10px; z-index: -1;
+    opacity: 0.85;
+  }
+  .about-badge {
+    position: absolute; top: 24px; left: -20px;
+    background: var(--red); color: #fff;
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.72rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.5rem 1rem; border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(232,0,29,0.4);
+  }
+  .about p { color: var(--muted); font-size: 0.98rem; margin-bottom: 1rem; }
+  .about-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.8rem; }
+  .btn-sm-red {
+    display: inline-block; background: var(--red); color: #fff;
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.8rem;
+    letter-spacing: 0.06em; text-decoration: none;
+    padding: 0.65rem 1.5rem; border-radius: 4px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-sm-red:hover { background: var(--dark-red); transform: translateY(-1px); }
+  .btn-sm-outline {
+    display: inline-block; background: transparent;
+    color: var(--text); border: 2px solid var(--border);
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.8rem;
+    letter-spacing: 0.06em; text-decoration: none;
+    padding: 0.65rem 1.5rem; border-radius: 4px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-sm-outline:hover { border-color: var(--red); color: var(--red); }
+
+  /* ── STORY ── */
+  .story {
+    background: var(--bg2); padding: 7rem 6rem;
+    transition: background 0.4s;
+  }
+  .story-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .story-text h2.section-heading { margin-bottom: 0.5rem; }
+  .story-subtitle {
+    font-family: 'Montserrat', sans-serif; font-weight: 700;
+    font-size: 1rem; color: var(--red); margin-bottom: 1.5rem;
+    letter-spacing: 0.04em;
+  }
+  .story-text p { color: var(--muted); font-size: 0.98rem; margin-bottom: 1rem; }
+  .registered-badge {
+    display: inline-block;
+    background: var(--bg); border: 1.5px solid var(--border);
+    border-radius: 6px; padding: 0.6rem 1.2rem;
+    font-size: 0.82rem; font-weight: 600; color: var(--muted);
+    margin-top: 1rem;
+    transition: background 0.4s, border-color 0.4s;
+  }
+  .story-img-wrap { position: relative; border-radius: 10px; overflow: hidden; }
+  .story-img-wrap img { width: 100%; border-radius: 10px; display: block; }
+  .story-img-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.75));
+    color: #fff; padding: 2rem 1.5rem 1.5rem;
+    font-family: 'Montserrat', sans-serif; font-weight: 700;
+    font-size: 1rem; letter-spacing: 0.02em;
+  }
+
+  /* ── JOIN TEAM ── */
+  .join {
+    background: var(--text); padding: 7rem 6rem;
+    transition: background 0.4s;
+  }
+  [data-theme="dark"] .join { background: #0D0005; }
+  .join-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+  }
+  .join-left .section-label { color: #ff4d6a; }
+  .join-left h2.section-heading { color: #fff; }
+  .join-left p { color: rgba(255,255,255,0.65); font-size: 0.98rem; margin-bottom: 1rem; }
+  .btn-red-lg {
+    display: inline-block; background: var(--red); color: #fff;
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem;
+    letter-spacing: 0.06em; text-decoration: none;
+    padding: 0.85rem 2.2rem; border-radius: 4px; margin-top: 1rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-red-lg:hover { background: var(--dark-red); transform: translateY(-2px); }
+  .join-cards { display: flex; flex-direction: column; gap: 1rem; }
+  .join-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px; padding: 1.4rem 1.6rem;
+    display: flex; gap: 1rem; align-items: flex-start;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .join-card:hover { background: rgba(255,255,255,0.1); border-color: rgba(232,0,29,0.4); }
+  .join-card-icon {
+    font-size: 1.5rem; flex-shrink: 0; margin-top: 2px;
+  }
+  .join-card-title { font-weight: 700; color: #fff; font-size: 0.95rem; margin-bottom: 0.2rem; }
+  .join-card-desc { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+
+  /* ── FOUNDER QUOTE ── */
+  .founder {
+    background: var(--bg); padding: 7rem 6rem;
+    transition: background 0.4s;
+  }
+  .founder-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 2fr;
+    gap: 5rem; align-items: center;
+  }
+  .founder-card {
+    background: var(--red); border-radius: 16px;
+    padding: 2.5rem 2rem; text-align: center;
+  }
+  .founder-avatar {
+    width: 90px; height: 90px; border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    margin: 0 auto 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Montserrat', sans-serif; font-weight: 900;
+    font-size: 2rem; color: #fff; letter-spacing: -0.05em;
+  }
+  .founder-name {
+    font-family: 'Montserrat', sans-serif; font-weight: 900;
+    color: #fff; font-size: 1.1rem; margin-bottom: 0.2rem;
+  }
+  .founder-role { color: rgba(255,255,255,0.75); font-size: 0.82rem; }
+  .founder-quote-block blockquote {
+    font-family: 'Montserrat', sans-serif; font-weight: 700;
+    font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+    line-height: 1.35; color: var(--text);
+    position: relative; padding-left: 2rem;
+  }
+  .founder-quote-block blockquote::before {
+    content: '\201C';
+    position: absolute; left: 0; top: -10px;
+    font-size: 4rem; color: var(--red); line-height: 1;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .founder-quote-block .quote-attr {
+    margin-top: 1.5rem; color: var(--red);
+    font-weight: 700; font-size: 0.85rem;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--bg2); padding: 6rem 6rem;
+    transition: background 0.4s;
+  }
+  .contact-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+  .contact h2.section-heading { margin-bottom: 0.5rem; }
+  .contact p { color: var(--muted); margin-bottom: 2rem; }
+  .contact-items { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 1rem;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.1rem 1.4rem;
+    transition: border-color 0.2s, background 0.4s;
+  }
+  .contact-item:hover { border-color: var(--red); }
+  .contact-icon {
+    width: 42px; height: 42px; border-radius: 8px;
+    background: var(--red);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .contact-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 2px; }
+  .contact-val { font-weight: 600; font-size: 0.95rem; color: var(--text); }
+  .contact-val a { color: var(--text); text-decoration: none; }
+  .contact-val a:hover { color: var(--red); }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%; padding: 0.85rem 1.1rem;
+    background: var(--card); border: 1.5px solid var(--border);
+    border-radius: 8px; color: var(--text);
+    font-family: 'Open Sans', sans-serif; font-size: 0.92rem;
+    transition: border-color 0.2s, background 0.4s;
+    outline: none;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus { border-color: var(--red); }
+  .contact-form textarea { height: 120px; resize: vertical; }
+  .contact-form button {
+    background: var(--red); color: #fff;
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem;
+    letter-spacing: 0.04em; border: none; cursor: pointer;
+    padding: 0.9rem 2rem; border-radius: 6px;
+    transition: background 0.2s, transform 0.15s;
+    align-self: flex-start;
+  }
+  .contact-form button:hover { background: var(--dark-red); transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--footer-bg); padding: 4rem 6rem 2.5rem;
+    transition: background 0.4s;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem; margin-bottom: 3rem;
+    padding-bottom: 3rem; border-bottom: 1px solid #222;
+  }
+  .footer-brand-name {
+    font-family: 'Montserrat', sans-serif; font-weight: 900;
+    font-size: 1.4rem; color: #fff; margin-bottom: 0.75rem;
+  }
+  .footer-brand-name span { color: var(--red); }
+  .footer-brand p { color: var(--footer-text); font-size: 0.87rem; max-width: 270px; line-height: 1.6; }
+  .footer-brand .reg-note {
+    margin-top: 0.75rem; font-size: 0.75rem; color: #555;
+    font-style: italic;
+  }
+  .footer-col h4 {
+    font-family: 'Montserrat', sans-serif; font-weight: 700;
+    font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: #fff; margin-bottom: 1.2rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.65rem; }
+  .footer-col ul li a {
+    text-decoration: none; color: var(--footer-text);
+    font-size: 0.87rem; transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--red); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-copy { font-size: 0.78rem; color: #555; }
+  .footer-copy a { color: var(--red); text-decoration: none; }
+  .footer-socials { display: flex; gap: 0.6rem; }
+  .soc-btn {
+    width: 34px; height: 34px; border-radius: 6px;
+    border: 1px solid #2A2A2A; background: #1A1A1A;
+    display: flex; align-items: center; justify-content: center;
+    color: #777; font-size: 0.72rem; font-weight: 700;
+    text-decoration: none; transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .soc-btn:hover { background: var(--red); color: #fff; border-color: var(--red); }
+
+  /* ── REVEAL ── */
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    nav { padding: 0 2rem; }
+    .hero-content { padding: 0 3rem; }
+    .about, .story, .join, .founder, .contact, footer { padding-left: 3rem; padding-right: 3rem; }
+    .about-inner, .story-inner, .join-inner, .founder-inner, .contact-inner { gap: 3rem; }
+  }
+  @media (max-width: 860px) {
+    .nav-links { display: none; }
+    .hero-content { padding: 0 2rem; }
+    .about, .story, .join, .founder, .contact, footer { padding: 5rem 2rem; }
+    .about-inner, .story-inner, .join-inner, .founder-inner, .contact-inner { grid-template-columns: 1fr; }
+    .stats-strip { grid-template-columns: repeat(2,1fr); padding: 1.5rem 2rem; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+  @media (max-width: 560px) {
+    .stats-strip { grid-template-columns: repeat(2,1fr); }
+    .footer-top { grid-template-columns: 1fr; }
+    .hero-btns { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">
+    <img src="shecan123.jpg" alt="She Can Foundation Logo" />
+  </a>
+  <button class="theme-btn" id="theme-toggle">☀ / ☾</button>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 id="naaame">
+      Together We Can Change
+      <span class="hero-red">THE WORLD</span>
+    </h1>
+    <p class="hero-sub">We don't ask for much, just help us with what you can — Be it Money, Skill or Your Time</p>
+    <div class="hero-btns">
+      <a href="https://shecanfoundation.org/donate" target="_blank" class="btn-red">Donate Now</a>
+      <a href="#about" class="btn-outline">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats-strip">
+  <div>
+    <div class="ss-num">12,000+</div>
+    <div class="ss-lbl">Women Empowered</div>
+  </div>
+  <div>
+    <div class="ss-num">48</div>
+    <div class="ss-lbl">Communities</div>
+  </div>
+  <div>
+    <div class="ss-num">9+</div>
+    <div class="ss-lbl">Years of Impact</div>
+  </div>
+  <div>
+    <div class="ss-num">100%</div>
+    <div class="ss-lbl">Volunteer-Driven</div>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-img-wrap reveal">
+      <div class="about-badge">Est. 2015 · India</div>
+      <img src="shecan1234.jpg"
+           alt="She Can Foundation volunteers" />
+      <div class="about-img-accent"></div>
+    </div>
+    <div class="reveal">
+      <p class="section-label">About Us</p>
+      <h2 class="section-heading">Global Vision,<br>Local Action</h2>
+      <p>We are She Can Foundation, a non-governmental organization registered under the Indian Society Act, 1860, dedicated to empowering women and creating a more equitable society.</p>
+      <p>We provide support, resources, and training to women in communities across the globe, working closely with local organizations, governments, and communities to ensure that our programs are effective and sustainable.</p>
+      <p>Through advocacy campaigns and initiatives, we raise awareness of women's issues. We rely on the support of individuals, corporations, and other organizations to achieve our vision. We believe that by working together, we can revolutionize society and create a better world for all.</p>
+      <div class="about-links">
+        <a href="https://shecanfoundation.org/donate" target="_blank" class="btn-sm-red">Learn More</a>
+        <a href="https://shecanfoundation.org/our-certificate" target="_blank" class="btn-sm-outline">Our Certificates →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STORY ── -->
+<section class="story" id="story">
+  <div class="story-inner">
+    <div class="story-text reveal">
+      <p class="section-label">Our Story</p>
+      <h2 class="section-heading">Welcome to<br>She Can Foundation</h2>
+      <p class="story-subtitle">NGO Registered Under the Indian Society Act, 1860</p>
+      <p>She Can Foundation was born from a simple yet powerful belief — that every woman deserves the chance to rise. Since our founding, we have been on the ground in communities across India and beyond, turning that belief into action.</p>
+      <p>What started as a small volunteer effort has grown into a structured organization with real programs, real impact, and real lives changed — one woman at a time.</p>
+      <span class="registered-badge">🏛 Registered NGO · Indian Society Act, 1860</span>
+    </div>
+    <div class="story-img-wrap reveal">
+      <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=700&auto=format&fit=crop&q=80"
+           alt="She Can Foundation community work" />
+      <div class="story-img-caption">Making a difference, one community at a time</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── JOIN TEAM ── -->
+<section class="join" id="join">
+  <div class="join-inner">
+    <div class="join-left reveal">
+      <p class="section-label">Get Involved</p>
+      <h2 class="section-heading" style="color:#fff;">Join Our<br>Team</h2>
+      <p>Join our team and make a difference in the lives of women in need. At She Can Foundation, we are committed to creating positive change and empowering women in communities across the globe.</p>
+      <p>By joining our team, you will have the opportunity to contribute your time, skills, and ideas to help make a real impact in the lives of women. Whether you are passionate about education, health, or providing support during times of crisis, there is a place for you on our team.</p>
+      <p>Join us today and be a part of an organization that is dedicated to creating a more equitable society, one woman at a time.</p>
+      <a href="https://shecanfoundation.org/donate" target="_blank" class="btn-red-lg">Join Us →</a>
+    </div>
+    <div class="join-cards reveal">
+      <div class="join-card">
+        <div class="join-card-icon">💰</div>
+        <div>
+          <div class="join-card-title">Donate Money</div>
+          <div class="join-card-desc">Even a small amount funds a girl's education, a workshop, or a meal for a family in need.</div>
+        </div>
+      </div>
+      <div class="join-card">
+        <div class="join-card-icon">🎯</div>
+        <div>
+          <div class="join-card-title">Share Your Skill</div>
+          <div class="join-card-desc">Teach, train, or advise. Your professional expertise opens doors that money alone cannot.</div>
+        </div>
+      </div>
+      <div class="join-card">
+        <div class="join-card-icon">⏱</div>
+        <div>
+          <div class="join-card-title">Give Your Time</div>
+          <div class="join-card-desc">Volunteer on the ground, online, or at events. Presence and care go a long, long way.</div>
+        </div>
+      </div>
+      <div class="join-card">
+        <div class="join-card-icon">📣</div>
+        <div>
+          <div class="join-card-title">Spread the Word</div>
+          <div class="join-card-desc">Share our mission with your network. Awareness is the first step to meaningful change.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOUNDER QUOTE ── -->
+<section class="founder" id="founder">
+  <div class="founder-inner">
+    <div class="founder-card reveal">
+      <div class="founder-avatar">RM</div>
+      <div class="founder-name">Reeta Mishra</div>
+      <div class="founder-role">Founder & President<br>She Can Foundation</div>
+    </div>
+    <div class="founder-quote-block reveal">
+      <blockquote>
+        "Together, we can break down barriers and empower women. At She Can Foundation, we believe that if we all do our part, there is no challenge too great to overcome. Join us in our mission to create a world where every woman has the opportunity to thrive and succeed."
+      </blockquote>
+      <p class="quote-attr">— Reeta Mishra · Founder & President, She Can Foundation</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-heading">We'd Love<br>to Hear From You</h2>
+      <p>Reach out to us for partnerships, volunteering, donations, or any queries. Our team is happy to connect.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-icon">✉</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-val"><a href="mailto:president@shecanfoundation.org">president@shecanfoundation.org</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-val"><a href="tel:+918283841830">+91 82838 41830</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div>
+            <div class="contact-label">Website</div>
+            <div class="contact-val"><a href="https://shecanfoundation.org" target="_blank">shecanfoundation.org</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <form class="contact-form" onsubmit="handleForm(event)">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <input type="text" placeholder="Subject" />
+        <textarea placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+        <p id="form-msg" style="color:var(--red); font-size:0.85rem; display:none; margin-top:0.25rem;">✓ Message sent! We'll get back to you soon.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-brand-name">She Can <span>Foundation</span></div>
+      <p>A non-governmental organization dedicated to empowering women and creating a more equitable society — one community at a time.</p>
+      <p class="reg-note">Registered under the Indian Society Act, 1860</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#join">Join Team</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Links</h4>
+      <ul>
+        <li><a href="https://shecanfoundation.org/donate" target="_blank">Donate Now</a></li>
+        <li><a href="https://shecanfoundation.org/our-certificate" target="_blank">Our Certificates</a></li>
+        <li><a href="https://shecanfoundation.org/donate" target="_blank">Volunteer</a></li>
+        <li><a href="https://shecanfoundation.org/donate" target="_blank">Partner With Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:president@shecanfoundation.org">president@shecanfoundation.org</a></li>
+        <li><a href="tel:+918283841830">+91 82838 41830</a></li>
+        <li><a href="https://shecanfoundation.org" target="_blank">shecanfoundation.org</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2024 She Can Foundation. All rights reserved. &nbsp;·&nbsp; <a href="#">Privacy Policy</a></p>
+    <div class="footer-socials">
+      <a class="soc-btn" href="#" aria-label="Instagram">IG</a>
+      <a class="soc-btn" href="#" aria-label="Facebook">FB</a>
+      <a class="soc-btn" href="#" aria-label="Twitter">TW</a>
+      <a class="soc-btn" href="#" aria-label="LinkedIn">LI</a>
+      <a class="soc-btn" href="#" aria-label="YouTube">YT</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    const html = document.documentElement;
+    html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 100);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  const sections = ['home','about','story','join','founder','contact'];
+  const navAs = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = 'home';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 130) cur = id;
+    });
+    navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+  });
+
+  function handleForm(e) {
+    e.preventDefault();
+    const msg = document.getElementById('form-msg');
+    msg.style.display = 'block';
+    e.target.reset();
+    setTimeout(() => msg.style.display = 'none', 5000);
+  }
+</script>
+</body>
+</html>
